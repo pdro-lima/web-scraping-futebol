@@ -3,6 +3,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 # %%
 
 def acesso_pagina(url):
@@ -125,11 +126,10 @@ def coleta_dados(soup):
 # %%
 total_anos = (2025 - 2000) + 1
 
-lista_urls = []
 lista_dfs = []
 ano = 2024
 
-for i in range(total_anos):
+for i in tqdm(range(total_anos)):
     
     url = f"https://www.transfermarkt.com.br/campeonato-brasileiro-serie-a/torschuetzenliste/wettbewerb/BRA1/saison_id/{ano}/altersklasse/alle/detailpos//plus/1"
 
@@ -148,9 +148,16 @@ for i in range(total_anos):
 
     df['#'] = df['#'].astype(int)
     df = df.sort_values(by='#', ascending=True).reset_index(drop=True)
+
+    df['Ano'] = str(ano + 1)
     
     lista_dfs.append(df)
 
     ano -= 1
 
 df_geral = pd.concat(lista_dfs, ignore_index=True).reset_index(drop=True)
+
+# %%
+df_geral.to_parquet('../data/dados_artilheiros.parquet', index=False)
+
+# %%
