@@ -1,6 +1,6 @@
 # %%
 import pandas as pd
-
+import datetime
 # %%
 data = pd.read_parquet('../data/dados_artilheiros.parquet')
 # %%
@@ -22,8 +22,21 @@ data['Participações por Jogo'] = data['Participações em Gols'] / data['Jogos
 data['Minutos por participação'] = data['Minutos em campo'] / data['Participações em Gols']
 data['Minutos por participação'] = data['Minutos por participação'].astype(int)
 
-# %%
+def define_decada_campeonato(linha):
 
+    ano_atual = datetime.date.today().year
+
+    if int(linha['Ano']) <= 2009:
+        return "2000-2009"
+    elif int(linha['Ano']) <= 2019:
+        return "2010-2019"
+    elif int(linha['Ano']) <= ano_atual:
+        return f"2021-{ano_atual}"
+    
+
+data['Década'] = data.apply(define_decada_campeonato, axis=1)
+
+# %%
 # Esse bloco faz o tratamento de caracteres e espaçamentos especiais usados no HTML do site
 data['Idade (hoje)'] = (
     data['Idade (hoje)']
@@ -60,6 +73,7 @@ data = (data.rename(columns={'#': 'Posição - Ano',
                             'Penalti': 'Gols de Penalti'})
                             [['Posição - Ano', 
                             'Ano',
+                            'Década',
                             'Jogador',
                             'Clube',
                             'Nacionalidade 1', 
@@ -80,4 +94,7 @@ data = (data.rename(columns={'#': 'Posição - Ano',
                             'Minutos por participação'
                             ]]
 )
+
+# %%
+data.to_parquet('../data/tb_artilheiros_brasileirao.parquet', index=False)
 # %%
