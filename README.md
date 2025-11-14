@@ -16,6 +16,17 @@ Estruturação e armazenamento dos dados em formato tabular com pandas.
 
 ---
 
+## Tratamento dos Dados
+
+Bibliotecas utilizadas: pandas, datetime
+
+O tratamento dos dados trouxe padronização, limpeza e segurança aos dados, gerando possibilidade de análise e geração de insights confiáveis. Passou por etapas como:
+- Tratamento de caracteres especiais no HTML coletado do site com replace e regex
+- Tratamento de colunas com dados aninhados ou em listas com normalização
+- Criação de novas colunas de dados quantitativos e qualitativos com iteração, funções, manipulação de tipo de dados, e etc...
+- Renomeação e organização das colunas
+
+
 ## Arquitetura do Projeto
 
 ```bash
