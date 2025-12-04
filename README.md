@@ -26,6 +26,19 @@ O tratamento dos dados trouxe padronização, limpeza e segurança aos dados, ge
 - Criação de novas colunas de dados quantitativos e qualitativos com iteração, funções, manipulação de tipo de dados, e etc...
 - Renomeação e organização das colunas
 
+## Analise dos Dados
+
+Bibliotecas utilizadas: pandas, matplotlib
+
+As análises buscaram entender o comportamento dos jogadores ao longo de todo período, possíveis tendências com base no histórico e o que pode ter motivado os cenários apresentados pelos dados. Para isso, alguns passos foram necessários:
+- Criação de subconjuntos de dados através de cálculos de diversas agregações e armazenamento em dataframes auxiliares
+- Filtragens, tabela dinâmica, agrupamentos, ordenações e geração de dados de suporte
+- Calcular estatísticas descritivas, rankings e indicadores derivados
+- Detectar e tratar outliers para análises sensíveis
+- Geração de visualizações - gráficos de barras, linhas, dispersão, pizza - para apoiar as conclusões
+- Realizar análises temporais e comparativas (tendências por década, posição, clube)
+- Estruturação lógica de insights textuais
+
 
 ## Arquitetura do Projeto
 
@@ -34,7 +47,7 @@ O tratamento dos dados trouxe padronização, limpeza e segurança aos dados, ge
 ├── src/
 │   ├── dados_artilheiros.py          # Script de coleta dos dados
 │   ├── processando_dados.py          # Script de tratamento dos dados
-│   ├── analises.py                   # Script de análises estatísticas dos dados
+│   ├── analises.py                   # Script de análises estatísticas dos dados com geração de insights
 │
 ├── data/                             # Armazenamento dos dados gerados
 ├── requirements.txt                  # Dependências do projeto
