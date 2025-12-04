@@ -39,6 +39,8 @@ As análises buscaram entender o comportamento dos jogadores ao longo de todo pe
 - Realizar análises temporais e comparativas (tendências por década, posição, clube)
 - Estruturação lógica de insights textuais
 
+obs: pra visualização dos gráficos juntos as conclusões textuais das análises utilize um ambiente de desenvolvimento que permite a execução do código em células e imprima os gráficos no kernel do ambiente.
+
 
 ## Arquitetura do Projeto
 
